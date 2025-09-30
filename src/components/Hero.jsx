@@ -1,85 +1,75 @@
 import { motion } from 'framer-motion'
-import heroGraphic from '../assets/hero-motion.svg'
+import { heroHighlights } from '../data.js'
 
-const heroVariant = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+const heroCopy = {
+  title: 'Handboll med hjärta och Höga Kusten-energi',
+  lead:
+    'Härnösands HF bjuder på modern handboll, öppna famnar och publikhav i grönt och orange. Upplev spelglädjen live – mitt i stadens puls.',
+  primaryCta: { label: 'Se nästa hemmamatch', href: '#' },
+  secondaryCta: { label: 'Upptäck medlemskap', href: '#' },
 }
 
-const staggerChildren = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } },
-}
-
-const childFade = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } },
+const heroTransitions = {
+  container: {
+    hidden: { opacity: 0, y: 32 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  },
+  children: {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: 0.2 + i * 0.12, duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+    }),
+  },
 }
 
 const clubLogo = '/harnosands-hf-logo.png'
 
-const stats = [
-  { label: 'Publiksnitt', value: '2 150' },
-  { label: 'Akademispelare', value: '180+' },
-  { label: 'Grundat', value: '1958' },
-]
-
 function Hero() {
   return (
-    <section className="hero" id="toppen">
-      <motion.div className="hero__aurora" initial="hidden" animate="visible" variants={heroVariant} />
-      <motion.div className="hero__grid" initial="hidden" animate="visible" variants={heroVariant} />
-
-      <motion.div className="hero__content" initial="hidden" animate="visible" variants={staggerChildren}>
-        <motion.div className="hero__logo-tile" variants={childFade}>
+    <section className="hero" id="hem">
+      <div className="hero__backdrop" aria-hidden="true" />
+      <div className="hero__glow" aria-hidden="true" />
+      <motion.div className="hero__shell" initial="hidden" animate="visible" variants={heroTransitions.container}>
+        <motion.div className="hero__badge" custom={0} initial="hidden" animate="visible" variants={heroTransitions.children}>
           <img src={clubLogo} alt="Härnösands HF logotyp" loading="eager" />
-          <div className="hero__logo-label">
+          <div>
             <span>Härnösands HF</span>
-            <span className="hero__tagline">Handboll med hjärta</span>
+            <span>Handboll med hjärta</span>
           </div>
         </motion.div>
 
-        <motion.h1 className="hero__title" variants={childFade}>
-          Handboll med puls från Höga Kusten
+        <motion.h1 custom={1} initial="hidden" animate="visible" variants={heroTransitions.children}>
+          {heroCopy.title}
         </motion.h1>
 
-        <motion.p className="hero__lead" variants={childFade}>
-          Ett hav av grönt och orange, där varje matchkväll förvandlar HHC Arena till Sveriges mest
-          laddade handbollsscena.
+        <motion.p custom={2} initial="hidden" animate="visible" variants={heroTransitions.children}>
+          {heroCopy.lead}
         </motion.p>
 
-        <motion.div className="hero__cta" variants={childFade}>
-          <a className="btn btn--primary" href="#medlemskap">
-            Köp biljetter
+        <motion.div className="hero__actions" custom={3} initial="hidden" animate="visible" variants={heroTransitions.children}>
+          <a className="btn btn--primary" href={heroCopy.primaryCta.href}>
+            {heroCopy.primaryCta.label}
           </a>
-          <a className="btn btn--ghost" href="#medlemskap">
-            Bli medlem
+          <a className="btn btn--ghost" href={heroCopy.secondaryCta.href}>
+            {heroCopy.secondaryCta.label}
           </a>
         </motion.div>
 
-        <motion.div className="hero__stats" variants={childFade}>
-          {stats.map((stat) => (
-            <div key={stat.label} className="hero__stat">
-              <span className="hero__stat-value">{stat.value}</span>
-              <span className="hero__stat-label">{stat.label}</span>
+        <motion.div className="hero__highlights" custom={4} initial="hidden" animate="visible" variants={heroTransitions.children}>
+          {heroHighlights.map((item) => (
+            <div key={item.label}>
+              <span>{item.value}</span>
+              <span>{item.label}</span>
             </div>
           ))}
         </motion.div>
       </motion.div>
-
-      <motion.div className="hero__visual" initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-        <motion.div
-          className="hero__ball-trace"
-          animate={{ rotate: [0, 3, -3, 0], y: [0, -10, 12, 0] }}
-          transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <img src={heroGraphic} alt="Handboll i rörelse med stadionljus" loading="lazy" />
-      </motion.div>
-
-      <div className="hero__scroll" aria-hidden="true">
-        <span>Scrolla vidare</span>
-        <div className="hero__scroll-line" />
-      </div>
     </section>
   )
 }

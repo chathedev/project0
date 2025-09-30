@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
 
 :root {
-  color-scheme: only light;
-  --harnosand-green: #2dd5a2;
-  --harnosand-green-dark: #1a7f63;
+  color-scheme: light only;
+  --harnosand-green: #13b179;
+  --harnosand-green-dark: #0b7a53;
   --harnosand-orange: #ff7b2f;
-  --harnosand-black: #050608;
-  --harnosand-white: #f4f7f8;
-  --harnosand-sky: #89b8f8;
-  --elevate-shadow: 0 20px 45px rgba(9, 17, 34, 0.45);
-  --glass: rgba(15, 22, 40, 0.55);
+  --harnosand-orange-soft: #ffe7d6;
+  --harnosand-graphite: #1b2d3b;
+  --harnosand-cloud: #f5f8fa;
+  --harnosand-sand: #fff7ef;
+  --harnosand-white: #ffffff;
+  --harnosand-text: #162432;
+  --hero-shadow: 0 40px 120px rgba(18, 90, 66, 0.14);
+  --card-shadow: 0 24px 60px rgba(23, 64, 45, 0.12);
   --scroll-y: 0;
 }
 
@@ -21,8 +24,8 @@
 
 body {
   font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--harnosand-black);
-  color: var(--harnosand-white);
+  background: var(--harnosand-cloud);
+  color: var(--harnosand-text);
   line-height: 1.6;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
@@ -44,7 +47,7 @@ img {
 
 section {
   position: relative;
-  padding: clamp(4rem, 6vw, 7rem) clamp(1.5rem, 6vw, 6rem);
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 7vw, 6rem);
   overflow: hidden;
 }
 
