@@ -1,26 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
 
 :root {
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #10213b;
-  background-color: #f5f7fb;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color-scheme: only light;
+  --harnosand-green: #2dd5a2;
+  --harnosand-green-dark: #1a7f63;
+  --harnosand-orange: #ff7b2f;
+  --harnosand-black: #050608;
+  --harnosand-white: #f4f7f8;
+  --harnosand-sky: #89b8f8;
+  --elevate-shadow: 0 20px 45px rgba(9, 17, 34, 0.45);
+  --glass: rgba(15, 22, 40, 0.55);
+  --scroll-y: 0;
 }
 
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  background-color: #f5f7fb;
+  font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--harnosand-black);
+  color: var(--harnosand-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -28,18 +33,21 @@ a {
   text-decoration: none;
 }
 
+button {
+  font-family: inherit;
+}
+
 img {
   max-width: 100%;
   display: block;
 }
 
-button,
-input,
-select,
-textarea {
-  font: inherit;
+section {
+  position: relative;
+  padding: clamp(4rem, 6vw, 7rem) clamp(1.5rem, 6vw, 6rem);
+  overflow: hidden;
 }
 
-main {
-  display: block;
+strong {
+  font-weight: 700;
 }
